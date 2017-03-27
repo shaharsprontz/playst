@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 // We will need to import a couple of specific API’s for dealing with reactive forms
 import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+//import { User } from '.../server/db/user.js';
+
 
 @Component({
   selector: 'register',
@@ -12,6 +15,8 @@ export class RegisterComponent {
   // The FormGroup object as you may remember from the simple form example exposes various API’s for dealing with forms. Here we are creating a new object and setting its type to FormGroup
   complexForm : FormGroup;
 
+ 
+  
   // We are passing an instance of the FormBuilder to our constructor
   constructor(fb: FormBuilder, private router: Router){
     // Here we are using the FormBuilder to build out our form.
