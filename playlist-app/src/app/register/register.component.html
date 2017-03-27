@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <h2>Register</h2>
+    <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+      <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
+        <label>First Name:</label>
+        <input class="form-control" type="text" placeholder="First name" [formControl]="complexForm.controls['firstName']">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['lastName'].valid}">
+        <label>Last Name</label>
+        <input class="form-control" type="text" placeholder="Last name" [formControl]="complexForm.controls['lastName']">
+      </div>
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['username'].valid}">
+        <label>Username</label>
+        <input class="form-control" type="text" placeholder="Username" [formControl]="complexForm.controls['username']">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" placeholder="Email Adress" [formControl]="complexForm.controls['email']">
+      </div>
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
+        <label>Password</label>
+        <input class="form-control" type="password" placeholder="Password" [formControl]="complexForm.controls['password']">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+

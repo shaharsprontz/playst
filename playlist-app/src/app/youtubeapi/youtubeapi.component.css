@@ -1,0 +1,48 @@
+
+.row { text-align: -webkit-center;}
+
+form {
+  margin-top: 50px;
+  /*margin-left: 20%;*/
+  width: 560px
+}
+
+#results {
+  text-align: center;
+}
+
+input {
+  width: 550px;
+}
+
+p {text-align: -webkit-auto}
+
+iframe {
+  margin-bottom: 20px
+}
+
+#videoTitle {
+  font-size: 25px
+}
+
+#apiInfo {
+  display: -webkit-inline-box
+}
+
+.btn-primary {
+  margin-bottom: 25px;
+  margin-left: 105px;
+  width: 350px
+}
+
+.btn-primary {
+  background: #952b2b;
+  border-color: #957575;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background: #782b2b;
+  border-color: #952b2b;
+}
