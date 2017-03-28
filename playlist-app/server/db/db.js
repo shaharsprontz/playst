@@ -7,6 +7,8 @@ var User = new mongoose.Schema({
     email: { type: String, required: true },
 });
 
+var playster = mongoose.model("user", User); // the same studentSchema we created before :)
+
 mongoose.model('User', User);  
 mongoose.connect('mongodb://localhost/'); 
 

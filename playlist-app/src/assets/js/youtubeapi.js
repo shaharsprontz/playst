@@ -17,20 +17,15 @@ $(function() {
           var results = response.result;
           $("#results").html("");
           $.each(results.items, function(index, item) {
-            $.get("./static/item.html", function(data) {
+            $.get("assets/static/item.html", function(data) {
                 $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
           });
-        //   resetVideoHeight();
+        
        });
     });
     
-    // $(window).on("resize", resetVideoHeight);
 });
-
-// function resetVideoHeight() {
-//     $(".video").css("height", $("#results").width() * 9/16);
-// }
 
 function init() {
     gapi.client.setApiKey("AIzaSyDOC-onvBgQkv4NUoelJ9r9CEHDBUGmwng");
