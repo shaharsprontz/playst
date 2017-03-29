@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/test_db', function(err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('everything is ok')
-    }
+var mongoose = require('mongoose');  
+var User = new mongoose.Schema({
+	name: { type: String },
+	age: Number,
+  email: String
 });
 
-module.exports = mongoose;
+mongoose.model('User', User);  
+mongoose.connect('mongodb://localhost/'); 
+
+console.log('we are connected');
