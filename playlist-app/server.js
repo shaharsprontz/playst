@@ -3,14 +3,14 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-
+const mongoose = require('mongoose');
 
 
 // Get our API routes
-//const api = require('./server/routes/api');
+
 const app = express();
-var db = require('./server/db/db.js');
-var user = require('./server/db/user')
+//var db = require('./server/db/db.js');
+//var user = require('./server/db/user')
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Set our api routes
-// app.use('/', api);
+mongoose.connect('mongodb://localhost:27017/users');
+mongoose.model('users', {name: String});
 
 // Catch all other routes and return the index file
 app.get('/', (req, res) => {
@@ -28,31 +28,33 @@ app.get('/', (req, res) => {
   console.log(req.body);
 })
 
+app.get('/users', function(req, res) {
+  mongoose.model('users').find(function(err, users) {
+    res.send("This is the users screen");
+  });
+});
+
+app.get('/users/test', function(req, res) {
+    new User({ name: 'Shahar'})
+    res.send(User);
+    // .save(function (err) {
+    //     if (err) {
+    //       res.status(504);
+    //       res.end(err);
+    //     } else {
+    //       console.log('user saved');
+    //       res.end();
+    //     }
+    //   });
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.post('/users', user.createUsers);
-app.get('/users', user.seeResults);
-app.delete('/users/:id', user.delete);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
-/**
- * Get port from environment and store in Express.
- */
-// const port = process.env.PORT || '3000';
-// app.set('port', port);
 
-// /**
-//  * Create HTTP server.
-//  */
-// const server = http.createServer(app);
-
-// /**
-//  * Listen on provided port, on all network interfaces.
-//  */
-// server.listen(port, () => console.log(`API running on localhost:${port}`));

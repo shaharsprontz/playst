@@ -1,15 +1,16 @@
-var mongoose = require('mongoose');
+var mongoose = require('../lib/db');
 
-
-var Schema = mongoose.Schema;
-var UserSchema = new Schema({
-    email: String,
+var schema = {
     firstName: String,
     lastName: String,
-    passwordHash: String,
-    passwordSalt: String
-});
-module.exports = mongoose.model('User', UserSchema);
+    username: String,
+    password: String,
+    email: String
+};
+
+var User = mongoose.model('User', schema);
+module.exports = User;
+console.log('mongoose connected')
 
 // module.exports = {
 //   createUsers: function (req, res) {

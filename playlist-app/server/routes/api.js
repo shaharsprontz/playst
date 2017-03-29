@@ -9,18 +9,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('register', (req, res) => {
-  res.send('registration page works');
-  console.log(req.body);
+  //res.send('registration page works');
+  console.log('registration page works');
 });
 
 router.get('playlist', (req, res) => {
-  res.send('playlist page works');
-  console.log(req.body);
+  //res.send('playlist page works');
+  console.log('playlist page works');
 });
 
 router.get('youtubeapi', (req, res) => {
-  res.send('youtubeapi works');
-  console.log(req.body);
+  //res.send('youtubeapi works');
+  console.log('youtubeapi works');
 });
 
 

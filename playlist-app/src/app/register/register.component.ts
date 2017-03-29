@@ -35,7 +35,7 @@ export class RegisterComponent {
   submitForm(data){
     console.log('Reactive Form Data: ')
     console.log(data);
-    this.router.navigate(['/playlist']);
+    //this.router.navigate(['/playlist']);
   }
 
   // saveCreds() {
