@@ -1,25 +1,10 @@
 require('mongoose').model('User');
-
-var mongoose = require('mongoose');
-
-
-
-// var mongoose = require('../lib/db');
-
-// var schema = {
-//     firstName: String,
-//     lastName: String,
-//     username: String,
-//     password: String,
-//     email: String
-// };
-
-var User = mongoose.model('User');
-
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 module.exports = {
   createUsers: function (req, res) {
-    var person = req.body;
+    const person = req.body;
     new User({ name: person.name, age: person.age, email: person.email })
       .save(function (err) {
         if (err) {
@@ -45,20 +30,9 @@ module.exports = {
     });
   },
   delete: function( req, res, next) {
-    console.log(req.params.id);
-    User.find({ _id: req.params.id}, function(err) {
-      if(err) {
-        req.status(504);
-        req.end();
-        console.log(err);
-      }
-    }).remove(function (err) {
-      console.log(err);
-      if (err) {
-        res.end(err);            
-      } else {
-        res.end();
-      }
-    });
+    // console.log(req.params.id);
+    User.remove({ _id: req.params.id }, function(err) {
+      console.log("User " + user.name + "removed");
+    })
   }
 }
