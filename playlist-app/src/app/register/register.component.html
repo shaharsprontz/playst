@@ -1,6 +1,6 @@
 <!--<div class="jumbotron">
     <h2>Register</h2>
-    <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <form [formGroup]="complexForm" (ngSubmit)="createUsers(complexForm.value)">
       <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
         <label>First Name:</label>
         <input class="form-control" type="text" placeholder="First name" [formControl]="complexForm.controls['firstName']">
@@ -27,23 +27,24 @@
     </form>
   </div>-->
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MY APP</title>
-</head>
-<body>
-  <h1>First Express page.</h1>
-  <h2>Register user</h2>
-  <form id='registerForm' action="/users" method="POST">
-  	<input type="text" placeholder="name" name="name"><br><br>
-  	<input type="number" placeholder="age" name="age"><br><br>
-  	<input type="email" placeholder="email" name="email"><br><br>
-  	<button type="submit">Submit</button>
-  </form>
-  <br>
-  <form action="/users" method="GET">
-  	<button type="submit">See result</button>
-  </form>
-</body>
-</html>
+
+<div class="form">
+    <h1>Registration Form</h1>
+    <form registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
+      <div class='section'>
+        <label for="name" class="label">Name</label>
+        <input type="text" id="name" placeholder="Johnny Bravo" class="form-control" name="name"  ngControl="name" #name="ngModel" ngModel required>
+      </div>
+      <div class="section">
+        <label for="age" class="label">Age</label>
+        <input type="number" id="age" placeholder="23" name="age" ngModel>
+      </div>
+      <div class="section">
+        <label for="email" class='label'>Email</label>
+        <input type="email" id="email" placeholder="johnny@gmail.com" name="email" ngModel>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="result">We have  users.</div>
+    <ul><li *ngFor="let person of persons">Name: , Age: , Email: </li></ul>
+</div>

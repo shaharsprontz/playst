@@ -12,7 +12,7 @@ import { YoutubeapiComponent } from './youtubeapi/youtubeapi.component';
 import { PostsService } from './posts.service';
 import { PostsComponent } from './posts/posts.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   // {
   //   path: 'home',
   //   component: HomepageComponent,

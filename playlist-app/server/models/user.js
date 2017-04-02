@@ -1,15 +1,18 @@
 require('mongoose').model('User');
+
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 module.exports = {
   createUsers: function (req, res) {
     const person = req.body;
-    new User({ name: person.name, age: person.age, email: person.email })
+    console.log(person)
+    new User(person)
       .save(function (err) {
         if (err) {
+          console.log(err);
           res.status(504);
-          res.end(err);
+          res.json(err);
         } else {
           console.log('user saved');
           res.end();
@@ -36,3 +39,13 @@ module.exports = {
     })
   }
 }
+
+// const mongoose = require('../lib/db');
+// const pageSchema = new mongoose.Schema({
+//     url: String,
+//     likes: Number,
+//     title: String,
+//     created_at: { default: Date.now, type: Date }
+// });
+
+// module.exports = mongoose.model('Page', pageSchema);

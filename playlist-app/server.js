@@ -22,30 +22,19 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Catch all other routes and return the index file
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-  //console.log(req.body);
+  console.log(req.body);
 })
 
 app.post('/users', user.createUsers);
 app.get('/users', user.seeResults);
 app.delete('/users:id', user.delete);
 
-// app.get('/users', function(req, res) {
-//     res.send("This is the users screen");
-  
-// });
-
-// app.post('/users/test', function(req, res) {
-//     new User({ name: 'Shahar'})
-//     res.send(User);
-// });
-
-
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'dist/index.html'));
+// });
 
 
