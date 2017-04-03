@@ -1,40 +1,61 @@
-// Get dependencies
-const express = require('express');
-const path = require('path');
-const http = require('http');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+// // Get dependencies
+// const express = require('express');
+// const path = require('path');
+// const http = require('http');
+// const bodyParser = require('body-parser');
+// const mongoose = require('mongoose');
 
-const app = express();
-const db = require('./server/lib/db.js');
-const user = require('./server/models/user.js');
-
-
-// Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+// const app = express();
+// const db = require('./server/lib/db.js');
+// const user = require('./server/models/user.js');
 
 
+// // Parsers for POST data
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-// Catch all other routes and return the index file
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-  console.log(req.body);
-})
+// // Point static path to dist
+// app.use(express.static(path.join(__dirname, 'dist')));
 
-app.post('/users', user.createUsers);
-app.get('/users', user.seeResults);
-app.delete('/users:id', user.delete);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'dist/index.html'));
+// // Catch all other routes and return the index file
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html');
+//   console.log(req.body);
+// })
+
+// app.post('/users', user.createUsers);
+// app.get('/users', user.seeResults);
+// app.delete('/users:id', user.delete);
+
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!');
 // });
 
+// // app.get('*', (req, res) => {
+// //   res.sendFile(path.join(__dirname, 'dist/index.html'));
+// // });
 
+
+// Dependencies
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
+// MongoDB
+mongoose.connect('mongodb://localhost/rest_test')
+
+// Express
+var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Routes
+app.use('/users', require('/Users/Shahar/Desktop/playst/playlist-app/server/routes/api'));
+
+app.use(express.static('dist'))
+
+// Start server
+app.listen(3000);
+console.log('API is running on port 3000');

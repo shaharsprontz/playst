@@ -30,14 +30,22 @@
 
 <div class="form">
     <h1>Registration Form</h1>
-    <form registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
+    <form id="regForm" action="/users" method="POST" registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
       <div class='section'>
-        <label for="name" class="label">Name</label>
-        <input type="text" id="name" placeholder="Johnny Bravo" class="form-control" name="name"  ngControl="name" #name="ngModel" ngModel required>
+        <label for="firstName" class="label">First Name</label>
+        <input type="text" id="firstName" placeholder="Johnny" class="form-control" name="firstName"  ngControl="firstName" #name="ngModel" ngModel required>
+      </div>
+      <div class='section'>
+        <label for="lastName" class="label">Last Name</label>
+        <input type="text" id="lastName" placeholder="Bravo" class="form-control" name="lastName"  ngControl="lastName" #name="ngModel" ngModel required>
       </div>
       <div class="section">
-        <label for="age" class="label">Age</label>
-        <input type="number" id="age" placeholder="23" name="age" ngModel>
+        <label for="userName" class="label">Age</label>
+        <input type="text" id="userName" placeholder="BlaBla" name="userName" ngModel>
+      </div>
+      <div class='section'>
+        <label for="password" class="label">Name</label>
+        <input type="password" id="password" class="form-control" name="password"  ngControl="password" #name="ngModel" ngModel required>
       </div>
       <div class="section">
         <label for="email" class='label'>Email</label>
@@ -46,5 +54,4 @@
       <button type="submit">Submit</button>
     </form>
     <div class="result">We have  users.</div>
-    <ul><li *ngFor="let person of persons">Name: , Age: , Email: </li></ul>
 </div>
