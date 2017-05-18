@@ -1,6 +1,9 @@
 // Dependencies
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
+require('mongoose').model('User');
+// var restful = require('node-restful');
+// var mongoose = restful.mongoose;
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 // Schema
 var userSchema = new mongoose.Schema({
@@ -12,23 +15,16 @@ var userSchema = new mongoose.Schema({
 });
 
 //Return model
-module.exports = restful.model('Users', userSchema);
-
-// require('mongoose').model('User');
-
-// const mongoose = require('mongoose');
-// const User = mongoose.model('User');
+module.exports = mongoose.model('Users', userSchema);
 
 // module.exports = {
 //   createUsers: function (req, res) {
-//     const person = req.body;
-//     console.log(person)
-//     new User(person)
+//     var person = req.body;
+//     new User({ name: person.name, age: person.age, email: person.email })
 //       .save(function (err) {
 //         if (err) {
-//           console.log(err);
 //           res.status(504);
-//           res.json(err);
+//           res.end(err);
 //         } else {
 //           console.log('user saved');
 //           res.end();
@@ -49,19 +45,20 @@ module.exports = restful.model('Users', userSchema);
 //     });
 //   },
 //   delete: function( req, res, next) {
-//     // console.log(req.params.id);
-//     User.remove({ _id: req.params.id }, function(err) {
-//       console.log("User " + user.name + "removed");
-//     })
+//     console.log(req.params.id);
+//     User.find({ _id: req.params.id}, function(err) {
+//       if(err) {
+//         req.status(504);
+//         req.end();
+//         console.log(err);
+//       }
+//     }).remove(function (err) {
+//       console.log(err);
+//       if (err) {
+//         res.end(err);            
+//       } else {
+//         res.end();
+//       }
+//     });
 //   }
 // }
-
-// // const mongoose = require('../lib/db');
-// // const pageSchema = new mongoose.Schema({
-// //     url: String,
-// //     likes: Number,
-// //     title: String,
-// //     created_at: { default: Date.now, type: Date }
-// // });
-
-// // module.exports = mongoose.model('Page', pageSchema);

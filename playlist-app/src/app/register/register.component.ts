@@ -3,8 +3,9 @@ import { Component, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Person } from './person';
+//import { Person } from './person';
 import * as $ from 'jquery';
+//import {UserService} from '../UserService'
 
 @Component({
   selector: 'register',

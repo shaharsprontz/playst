@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');  
-mongoose.connect('mongodb://localhost/'); 
 mongoose.Promise = global.Promise;
 
 
-var userSchema = new mongoose.Schema({
+var User = new mongoose.Schema({
 	firstName: { type: String },
 	LastName: { type: String },
 	userName: { type: Number },
@@ -11,18 +10,8 @@ var userSchema = new mongoose.Schema({
     email: { type: String, unique: true }
 });
 
-var User = mongoose.model('User', userSchema);  
+mongoose.model('User', User);  
+mongoose.connect('mongodb://localhost/test'); 
 console.log('we are connected to mongodb');
 
 module.exports = User;
-
-
-
-// const mongoose = require('mongoose');
-
-// mongoose.connect('mongodb://localhost/');
-
-// mongoose.Promise = global.Promise;
-
-// console.log('we are connected to mongodb');
-// module.exports = mongoose;
